@@ -1,0 +1,144 @@
+/* Contenedor padre para centrar todo en la pantalla */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Ajusta para que no pegue con el nav */
+    padding: 20px;
+}
+
+/* La tarjeta del perfil */
+.carta-perfil {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 10px 10px 0px #000000; /* Sombra sólida */
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center; /* Centra el texto e imágenes */
+}
+
+/* Título Lucas Lombardi */
+.titulo-perfil {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+/* Imagen de perfil */
+.imagen {
+    margin-bottom: 25px;
+}
+
+.imagen-perfil {
+    border: 3px solid #000000;
+    border-radius: 12px;
+    filter: grayscale(100%); /* Efecto blanco y negro como en tu captura */
+    transition: filter 0.3s ease;
+}
+
+.imagen-perfil:hover {
+    filter: grayscale(0%); /* Vuelve al color al pasar el mouse */
+}
+
+/* Contenedor de datos */
+.info-container {
+    text-align: left; /* Los datos se leen mejor alineados a la izquierda */
+    display: inline-block; /* Pero el bloque queda centrado */
+    width: 100%;
+}
+
+.info-item {
+    border-bottom: 1px solid #eeeeee;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+}
+
+.label {
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #666;
+}
+
+.value {
+    font-weight: 700;
+}
+
+.value-bio {
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Estilo para los numeritos (seguidores/repos) */
+.insigne {
+    background-color: #ffff00; /* Amarillo */
+    padding: 2px 8px;
+    border: 2px solid #000;
+    border-radius: 4px;
+}
+
+.info-footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #999;
+    text-align: center;
+}
+
+.about-card {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 12px 12px 0px #000000;
+    padding: 40px;
+    max-width: 800px;
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 12px;
+}
+
+.titulo-eleccion {
+    background-color: #ffff00; /* Amarillo */
+    display: inline-block;
+    padding: 5px 15px;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.titulo-juego {
+    color: #ff00ff; /* Fucsia para resaltar el nombre del juego */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-top: 20px;
+}
+
+.info-block {
+    margin-top: 25px;
+    border-left: 4px solid #000;
+        padding-left: 20px;
+}
+
+.info-block h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.info-block p, .info-block li {
+    font-weight: 500;
+    line-height: 1.6;
+    color: #333;
+}
+
+.info-block ul {
+    padding-left: 20px;
+}
+

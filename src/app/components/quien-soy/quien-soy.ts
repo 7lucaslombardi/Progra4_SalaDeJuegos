@@ -1,28 +1,23 @@
-import { Component, signal, inject, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, inject, OnInit } from '@angular/core';
+import { UserService } from '../../service/user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-quien-soy',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './quien-soy.html',
   styleUrl: './quien-soy.css',
 })
 export class QuienSoyComponent implements OnInit {
-  // Inyectamos el cliente HTTP 
-  private http = inject(HttpClient);
-  
-  // Signal para guardar la respuesta obtenida de github. Empezamos en null mientras carga.
-  myData = signal<any>(null);
 
-  ngOnInit(): void {
-    
-    this.http.get('https://api.github.com/users/7lucaslombardi').subscribe({
-        next: (data) => {
-          this.myData.set(data);
-        },
-        error: (err) => {
-          console.error('Error cargando el perfil de GitHub', err);
-        }
-      });
+  // Inyectamos el servicio
+  private userService = inject(UserService);
+
+  // Referencia al signal del service
+  usuario = this.userService.myData;
+
+  ngOnInit() {
+    // Cuando carga el componente, pedimos los datos
+    this.userService.obtenerUsuario();
   }
 }

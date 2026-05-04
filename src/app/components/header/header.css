@@ -1,19 +1,71 @@
+/* 1. Limpiamos el Nav para que se vea el lila de fondo */
 .uh-navbar {
-  background-color: var(--uh-primary);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  position: relative;
+    
+    /* 1. Definimos la raya negra fina que pediste */
+    border-bottom: 1px solid #000000 !important; 
+    
+    /* 2. Centrado y separación de los bordes de la pantalla */
+    width: 90%;           /* No ocupa el 100% del ancho, dejando aire a los lados */
+    max-width: 1200px;    /* Evita que en monitores muy grandes se estire demasiado */
+    margin: 0 auto;       /* Centra el bloque entero horizontalmente */
+    
+    /* 3. Alineación interna */
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, botones a la derecha */
+    align-items: center;            /* Centrado vertical perfecto */
+    padding: 1.5rem 0;              /* Separación arriba y abajo */
 }
 
-/* Linea de acento dorado debajo de la navbar — detalle institucional elegante */
-.uh-navbar::after {
-  content: '';
-  display: block;
-  height: 3px;
-  background: linear-gradient(90deg, var(--uh-accent), transparent);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+/* 2. El contenedor de los links (UL) */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    gap: 1.5rem; 
+    width: 100%;
 }
+
+/* 3. Estilo de los links: cajas negras con texto blanco (Cero transparencia) */
+.nav-item-link {
+    text-decoration: none;
+    background-color: #000000; /* Fondo negro sólido para que resalte sobre el lila */
+    color: #ffffff !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+/* 4. Hover: se vuelven amarillos al pasar el mouse */
+.nav-item-link:hover {
+    background-color: #ffff00;
+    color: #000000 !important;
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 0px rgba(0,0,0,1);
+}
+
+/* 5. El logo/título a la izquierda */
+.navbar-brand {
+    background-color: #ffff00; /* Amarillo neón */
+    color: #000000 !important;
+    padding: 10px 20px;
+    font-weight: 900;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0px #000;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* 6. El botón de registro (distinto a los demás) */
+.registro-btn {
+    background-color: #ff00ff !important; /* Fucsia fuerte */
+    box-shadow: 4px 4px 0px #000;
+}
+

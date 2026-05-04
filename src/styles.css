@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   ESTILOS GLOBALES — UserHub
+   Aqui se definen variables CSS y estilos que afectan a
+   TODA la aplicacion. Los estilos especificos de cada
+   componente van en su propio archivo .css.
+   ========================================================= */
+
+/* Variables CSS: permiten centralizar los valores de color,
+   fuente y espaciado. Si se necesita cambiar el color
+   principal, se cambia en un solo lugar.                    */
+
+/* Importamos una fuente con mucho peso y estilo "bold" */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@400;700;900&display=swap');
+
+body {
+    background-color: #ffffff; /* Fondo blanco puro */
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+
+/* Navbar: Raya negra fina y alineación total */
+.uh-navbar {
+    display: flex;
+    justify-content: space-between; /* Logo a un lado, lista al otro */
+    align-items: flex-start;       /* Alinea todo al borde superior */
+    padding: 20px 40px;            /* Espacio arriba y a los costados */
+    border-bottom: 2px solid #000000; /* Raya negra fina y clara */
+    background-color: #ffffff;
+}
+
+/* Logo Amarillo */
+.navbar-brand {
+    background-color: #ffff00;
+    color: #000000 !important;
+    font-weight: 900;
+    padding: 10px 20px;
+    border: 3px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+/* Contenedor de la lista */
+.nav-links {
+    display: flex;
+    gap: 15px;      /* Espacio entre botones */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Botones Negros */
+.nav-item-link {
+    text-decoration: none;
+    background-color: #000000;
+    color: #ffffff !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+/* Hover Amarillo */
+.nav-item-link:hover {
+    background-color: #ffff00;
+    color: #000000 !important;
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0px #000000;
+}
+
+/* Botón Registro Fucsia */
+.registro-btn {
+    background-color: #ff00ff !important;
+    color: #ffffff !important;
+    box-shadow: 3px 3px 0px #000000;
+}

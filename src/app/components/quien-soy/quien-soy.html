@@ -1,1 +1,76 @@
-<p>quien-soy works!</p>
+<div class="main-container">
+  <div class="carta-perfil">
+    <!-- Título con clase personalizada -->
+    <h2 class="titulo-perfil">{{ usuario()?.name }}</h2>
+
+    <!-- Imagen con borde -->
+    <div class="imagen">
+      <img class="imagen-perfil" [src]="usuario()?.avatar_url" width="150">
+    </div>
+
+    <!-- Bloque de información con iconos o etiquetas -->
+    <div class="info-container">
+      <div class="info-item">
+        <span class="value-bio">{{ usuario()?.bio}}</span>
+      </div>
+      
+      <div class="info-item">
+        <span class="label">Usuario:</span> 
+        <span class="value">{{ usuario()?.login }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Seguidores:</span> 
+        <span class="value insigne">{{ usuario()?.followers }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Repos Públicos:</span> 
+        <span class="value insigne">{{ usuario()?.public_repos }}</span>
+      </div>
+      <div class="info-footer">
+        <p>Miembro desde: {{ usuario()?.created_at | date:'dd/MM/yyyy' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+  <div class="about-card">
+    <!-- Título de la sección -->
+    <h1 class="titulo-eleccion">Eleccion del juego</h1>
+    
+
+      <section class="info-juego">
+        <h2 class="titulo-juego">Click the Circle</h2>
+        
+        <div class="info-block">
+          <h3>¿Por qué lo elegí?</h3>
+          <p>
+            Lo elegí porque me pareció una propuesta distinta a los otros tres. El Ahorcado es de pensar, 
+            el Preguntados es de conocimiento y el de Mayor o Menor es puro azar. Con Click the Circle 
+            quería sumar algo de acción y reflejos.
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>Reglas del Juego</h3>
+          <ul>
+            <li>El objetivo aparece en una posición al azar.</li>
+            <li>Debes hacer clic lo más rápido posible.</li>
+            <li>Al acertar, el objetivo cambia de lugar inmediatamente.</li>
+            <li>Pierdes si no logras tocarlo a tiempo.</li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <h3>Sistema de Puntos</h3>
+          <p>
+            Cada acierto suma 1 punto. A medida que avanzas, la velocidad aumenta, 
+            haciendo que el círculo se quede menos tiempo quieto. El sistema guarda tu mejor récord personal.
+          </p>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>
+
