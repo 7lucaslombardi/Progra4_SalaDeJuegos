@@ -1,0 +1,80 @@
+/* La tarjeta de login centrada */
+.login-card {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 12px 12px 0px #000000;
+    padding: 50px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+}
+
+.login-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    letter-spacing: -2px;
+}
+
+/* Etiquetas y campos de texto */
+.form-label {
+    display: block;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 3px solid #000000;
+    border-radius: 8px;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    box-shadow: 4px 4px 0px #000000;
+    transform: translate(-2px, -2px);
+}
+
+/* Botón Negro Principal */
+.btn-login-black {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn-login-black:hover {
+    background-color: #ffff00; /* Amarillo neón al pasar el mouse */
+    color: #000000;
+    box-shadow: 6px 6px 0px #000000;
+    transform: translate(-3px, -3px);
+}
+
+/* Botón secundario (Outline) */
+.btn-login-outline {
+    background-color: transparent;
+    color: #000000;
+    border: 3px solid #000000;
+    padding: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn-login-outline:hover {
+    background-color: #f0f0f0;
+}
