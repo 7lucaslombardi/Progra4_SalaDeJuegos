@@ -1,13 +1,25 @@
 <nav class="uh-navbar">
-    <!-- Logo a la izquierda -->
-    <a class="navbar-brand">SALA DE JUEGOS</a>
+    <div class="nav-section-left">
+        <a class="navbar-brand" routerLink="/bienvenida">SALA DE JUEGOS</a>
+    </div>
 
-    <!-- Lista a la derecha -->
-    <ul class="nav-links">
-        <li><a routerLink="/bienvenida" class="nav-item-link">Inicio</a></li>
-        <li><a routerLink="/quien-soy" class="nav-item-link">Quién Soy</a></li>
-        <li><a routerLink="/login" class="nav-item-link">Iniciar Sesión</a></li>
-        <li><a routerLink="/registro" class="nav-item-link registro-btn">Registro</a></li>
-    </ul>
+    <div class="nav-section-center">
+        @if (authService.isAuthenticated()) {
+            <span class="user-name-badge">{{ authService.mailUsuario() }}</span>
+        }
+    </div>
+
+    <div class="nav-section-right">
+        <ul class="nav-links">
+            <li><a routerLink="/bienvenida" class="nav-item-link" routerLinkActive="active">Inicio</a></li>
+
+            @if (!authService.isAuthenticated()) {
+                <li><a routerLink="/login" class="nav-item-link">Iniciar Sesion</a></li>
+                <li><a routerLink="/registro" class="nav-item-link registro-btn">Registrarse</a></li>
+            } @else {
+                <li><a routerLink="/quien-soy" class="nav-item-link">Quién Soy</a></li>
+                <li><button (click)="authService.logout()" class="logout-btn">Cerrar Sesion</button></li>
+            }
+        </ul>
+    </div>
 </nav>
-

@@ -1,1 +1,64 @@
-<p>registro works!</p>
+<div class="neo-container">
+    <div class="neo-card">
+
+        <h2 class="neo-title">REGISTRO</h2>
+
+        <form (ngSubmit)="onSubmit()" class="neo-form">
+
+            <div class="neo-row">
+                <div class="neo-group">
+                    <label class="neo-label">NOMBRE</label>
+                    <input type="text" [(ngModel)]="nombre" name="nombre" required class="neo-input">
+                </div>
+                <div class="neo-group">
+                    <label class="neo-label">APELLIDO</label>
+                    <input type="text" [(ngModel)]="apellido" name="apellido" required class="neo-input">
+                </div>
+            </div>
+
+            <div class="neo-group">
+                <label class="neo-label">EDAD</label>
+                <input type="number" name="edad" [(ngModel)]="edad" required class="neo-input">
+            </div>
+
+            <div class="neo-group">
+                <label class="neo-label">EMAIL</label>
+                <input type="email" name="email" [(ngModel)]="email" required class="neo-input"
+                    placeholder="tu@email.com">
+            </div>
+
+            <div class="neo-group">
+                <label class="neo-label">CONTRASEÑA</label>
+                <div class="neo-pass-wrapper">
+                    <input name="password" [(ngModel)]="password" required class="neo-input" placeholder="••••••••">
+                </div>
+            </div>
+
+            @if (errorMensaje()) {
+            <div class="neo-error">
+                {{ errorMensaje() }}
+            </div>
+            }
+
+            @if (mensajeExitoso()) {
+            <div class="neo-success-box">
+                <i class="bi bi-controller fs-4"></i>
+                {{ mensajeExitoso() }}
+            </div>
+            }
+
+            <button type="submit" class="neo-btn-primary" [disabled]="loading()">
+                @if (loading()) {
+                <span class="spinner-border spinner-border-sm"></span>
+                } @else {
+                CREAR CUENTA
+                }
+            </button>
+        </form>
+
+        <div class="neo-footer">
+            <p>¿Ya tenés cuenta? <a routerLink="/login">INGRESAR</a></p>
+        </div>
+
+    </div>
+</div>

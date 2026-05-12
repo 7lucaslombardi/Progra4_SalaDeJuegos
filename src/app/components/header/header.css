@@ -1,71 +1,97 @@
-/* 1. Limpiamos el Nav para que se vea el lila de fondo */
+/* 1. Contenedor Principal */
 .uh-navbar {
-    
-    /* 1. Definimos la raya negra fina que pediste */
     border-bottom: 1px solid #000000 !important; 
-    
-    /* 2. Centrado y separación de los bordes de la pantalla */
-    width: 90%;           /* No ocupa el 100% del ancho, dejando aire a los lados */
-    max-width: 1200px;    /* Evita que en monitores muy grandes se estire demasiado */
-    margin: 0 auto;       /* Centra el bloque entero horizontalmente */
-    
-    /* 3. Alineación interna */
+    width: 95%; /* Un poco más ancho para que no se amontone */
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Logo a la izquierda, botones a la derecha */
-    align-items: center;            /* Centrado vertical perfecto */
-    padding: 1.5rem 0;              /* Separación arriba y abajo */
+    align-items: center;
+    padding: 1rem 0;
+    position: relative; /* Para asegurar el centrado */
 }
 
-/* 2. El contenedor de los links (UL) */
+/* 2. Secciones del Nav */
+.nav-section-left {
+    flex: 1; /* Ocupa espacio a la izquierda */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-section-center {
+    flex: 2; /* Ocupa más espacio para asegurar el centro */
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* Evita que el contenedor bloquee clicks */
+}
+
+.nav-section-right {
+    flex: 1; /* Ocupa espacio a la derecha */
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 3. El Badge del Usuario (CENTRO) */
+.user-name-badge {
+    pointer-events: auto; /* Reactiva clicks si los necesitara */
+    background-color: #00ffff; /* Cian Neón */
+    color: #000 !important;
+    font-weight: 900;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    border: 3px solid #000;
+    border-radius: 5px;
+    box-shadow: 4px 4px 0px #000;
+    text-transform: lowercase;
+    white-space: nowrap;
+}
+
+/* 4. Lista de Links (DERECHA) */
 .nav-links {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-end; 
-    gap: 1.5rem; 
-    width: 100%;
+    gap: 1rem;
 }
 
-/* 3. Estilo de los links: cajas negras con texto blanco (Cero transparencia) */
-.nav-item-link {
+/* 5. Botones Negros (Iguales a tu estilo) */
+.nav-item-link, .logout-btn {
     text-decoration: none;
-    background-color: #000000; /* Fondo negro sólido para que resalte sobre el lila */
-    color: #ffffff !important;
+    background-color: #000;
+    color: #fff !important;
     font-weight: 800;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    padding: 10px 20px;
+    font-size: 0.75rem;
+    padding: 10px 15px;
+    border: 2px solid #000;
     border-radius: 8px;
-    border: 2px solid #000000;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
+    cursor: pointer;
     display: inline-block;
 }
 
-/* 4. Hover: se vuelven amarillos al pasar el mouse */
-.nav-item-link:hover {
+.nav-item-link:hover, .logout-btn:hover {
     background-color: #ffff00;
-    color: #000000 !important;
-    transform: translateY(-3px);
-    box-shadow: 4px 4px 0px rgba(0,0,0,1);
+    color: #000 !important;
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0px #000;
 }
 
-/* 5. El logo/título a la izquierda */
+/* 6. Logo (IZQUIERDA) */
 .navbar-brand {
-    background-color: #ffff00; /* Amarillo neón */
-    color: #000000 !important;
-    padding: 10px 20px;
+    background-color: #ffff00;
+    color: #000 !important;
+    padding: 8px 15px;
     font-weight: 900;
     border: 3px solid #000;
-    box-shadow: 5px 5px 0px #000;
+    box-shadow: 4px 4px 0px #000;
     text-transform: uppercase;
     text-decoration: none;
+    font-size: 1rem;
 }
 
-/* 6. El botón de registro (distinto a los demás) */
+/* Botón especial Registro */
 .registro-btn {
-    background-color: #ff00ff !important; /* Fucsia fuerte */
-    box-shadow: 4px 4px 0px #000;
+    background-color: #ff00ff !important;
 }
-
