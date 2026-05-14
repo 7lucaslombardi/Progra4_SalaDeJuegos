@@ -41,7 +41,7 @@
     border: 3px solid #000;
     border-radius: 5px;
     box-shadow: 4px 4px 0px #000;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     white-space: nowrap;
 }
 

@@ -2,10 +2,9 @@
 export interface UserSession {
     id: string;
     email:string;
-    // correo: string;
-    // nombre: string;
-    // apellido: string;
-    // edad: number;
+    nombre: string;
+    apellido: string;
+    edad: number;
 }
 
 // datos de la tabla de supabase de usuarios

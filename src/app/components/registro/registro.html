@@ -3,37 +3,74 @@
 
         <h2 class="neo-title">REGISTRO</h2>
 
-        <form (ngSubmit)="onSubmit()" class="neo-form">
+        <!-- 1. Enlazamos el FormGroup -->
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="neo-form">
 
             <div class="neo-row">
+                <!-- NOMBRE -->
                 <div class="neo-group">
                     <label class="neo-label">NOMBRE</label>
-                    <input type="text" [(ngModel)]="nombre" name="nombre" required class="neo-input">
+                    <input type="text" formControlName="nombre" class="neo-input">
+
+                    @if(registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
+                    <small class="error-text">El nombre es obligatorio.</small>
+                    }
                 </div>
+
+                <!-- APELLIDO -->
                 <div class="neo-group">
                     <label class="neo-label">APELLIDO</label>
-                    <input type="text" [(ngModel)]="apellido" name="apellido" required class="neo-input">
+                    <input type="text" formControlName="apellido" class="neo-input">
+
+                    @if(registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched) {
+                    <small class="error-text">El apellido es obligatorio.</small>
+                    }
                 </div>
             </div>
 
+            <!-- EDAD -->
             <div class="neo-group">
                 <label class="neo-label">EDAD</label>
-                <input type="number" name="edad" [(ngModel)]="edad" required class="neo-input">
+                <input type="number" formControlName="edad" class="neo-input">
+
+                @if(registroForm.get('edad')?.invalid && registroForm.get('edad')?.touched) {
+                <small class="error-text">
+                    @if(registroForm.get('edad')?.errors?.['required']) { La edad es obligatoria. }
+                    @if(registroForm.get('edad')?.errors?.['min'] || registroForm.get('edad')?.errors?.['max']) { Debe
+                    ser entre 1 y 100 años. }
+                </small>
+                }
             </div>
 
+            <!-- EMAIL -->
             <div class="neo-group">
                 <label class="neo-label">EMAIL</label>
-                <input type="email" name="email" [(ngModel)]="email" required class="neo-input"
-                    placeholder="tu@email.com">
+                <input type="email" formControlName="email" class="neo-input" placeholder="tu@email.com">
+
+                @if(registroForm.get('email')?.invalid && registroForm.get('email')?.touched) {
+                <small class="error-text">
+                    @if(registroForm.get('email')?.errors?.['required']) { El email es obligatorio. }
+                    @if(registroForm.get('email')?.errors?.['email']) { El formato es inválido. }
+                </small>
+                }
             </div>
 
+            <!-- CONTRASEÑA -->
             <div class="neo-group">
                 <label class="neo-label">CONTRASEÑA</label>
                 <div class="neo-pass-wrapper">
-                    <input name="password" [(ngModel)]="password" required class="neo-input" placeholder="••••••••">
+                    <input type="password" formControlName="password" class="neo-input" placeholder="••••••••">
                 </div>
+
+                @if(registroForm.get('password')?.invalid && registroForm.get('password')?.touched) {
+                <small class="error-text">
+                    @if(registroForm.get('password')?.errors?.['required']) { La clave es obligatoria. }
+                    @if(registroForm.get('password')?.errors?.['minlength']) { El mínimo son 6 caracteres. }
+                </small>
+                }
             </div>
 
+            <!-- Alertas Globales -->
             @if (errorMensaje()) {
             <div class="neo-error">
                 {{ errorMensaje() }}
@@ -47,7 +84,8 @@
             </div>
             }
 
-            <button type="submit" class="neo-btn-primary" [disabled]="loading()">
+            <!-- 2. Botón desactivado si el formulario es inválido o está cargando -->
+            <button type="submit" class="neo-btn-primary" [disabled]="registroForm.invalid || loading()">
                 @if (loading()) {
                 <span class="spinner-border spinner-border-sm"></span>
                 } @else {

@@ -4,8 +4,8 @@
     </div>
 
     <div class="nav-section-center">
-        @if (authService.isAuthenticated()) {
-            <span class="user-name-badge">{{ authService.mailUsuario() }}</span>
+        @if (authService.isAuthenticated() && !validacionRuta()) {
+        <span class="user-name-badge">Jugador: {{ authService.nombreUsuario() }}</span>
         }
     </div>
 
@@ -13,12 +13,12 @@
         <ul class="nav-links">
             <li><a routerLink="/bienvenida" class="nav-item-link" routerLinkActive="active">Inicio</a></li>
 
-            @if (!authService.isAuthenticated()) {
-                <li><a routerLink="/login" class="nav-item-link">Iniciar Sesion</a></li>
-                <li><a routerLink="/registro" class="nav-item-link registro-btn">Registrarse</a></li>
+            @if (authService.isAuthenticated() && !validacionRuta()) {
+            <li><a routerLink="/quien-soy" class="nav-item-link">Quién Soy</a></li>
+            <li><button (click)="authService.logout()" class="logout-btn">Cerrar Sesion</button></li>
             } @else {
-                <li><a routerLink="/quien-soy" class="nav-item-link">Quién Soy</a></li>
-                <li><button (click)="authService.logout()" class="logout-btn">Cerrar Sesion</button></li>
+            <li><a routerLink="/login" class="nav-item-link">Iniciar Sesion</a></li>
+            <li><a routerLink="/registro" class="nav-item-link registro-btn">Registrarse</a></li>
             }
         </ul>
     </div>

@@ -22,26 +22,43 @@ export class AuthService {
   isAuthenticated = computed(() => this.user() !== null);
 
   // Signal computado: Devuelve el correo del usuario logueado o la palabra 'Invitado'.
-  mailUsuario = computed(() => this.user()?.email ?? 'Invitado');
+  nombreUsuario = computed(() => this.user()?.nombre ?? 'Invitado');
 
   // Controla el mensaje de error rojo que le mostramos al usuario
   errorMensaje = signal('');
 
-  constructor() {
-    // Apenas arranca la app, nos fijamos si ya había alguien logueado de antes
-    this.checkSession();
+  sesionActiva: Promise<void>;
 
-    // Este es un "vigilante" de Supabase.
-    // Si la sesión cambia por cualquier motivo (ej: se cierra desde otra pestaña),
-    // actualiza nuestro Signal automáticamente para que Angular se entere.
+  constructor() {
+    // Guardamos la promesa para que los guards puedan esperarla
+    this.sesionActiva = this.checkSession();
+
     this.supabase.getCliente().auth.onAuthStateChange((event, session) => {
       if (session?.user) {
-        this.user.set({ id: session.user.id, email: session.user.email ?? '' });
+        this.cargarUsuario(session.user);
       } else {
-        this.user.set(null); // Si cerró sesión, vaciamos el megáfono
+        this.user.set(null);
       }
     });
   }
+
+  private cargarUsuario(supabaseUser: any) {
+  // Extraemos las propiedades que necesitamos usando desestructuración
+  const { id, email, user_metadata } = supabaseUser;
+
+  // Creamos un objeto de perfil con valores de respaldo (fallback)
+  const perfilActualizado = {
+    id: id,
+    email: email ?? '',
+    nombre: user_metadata?.nombre,
+    apellido: user_metadata?.apellido,
+    edad: Number(user_metadata?.edad)
+  };
+
+  // Actualizamos con el objeto ya procesado
+  this.user.set(perfilActualizado);
+}
+
 
   // Método para que la sesión sobreviva si el usuario aprieta F5 (recarga la página)
   async checkSession() {
@@ -50,10 +67,7 @@ export class AuthService {
 
     // Si la hay, restauramos los datos en nuestro Signal
     if (session?.user) {
-      this.user.set({
-        id: session.user.id,
-        email: session.user.email ?? ''
-      });
+      this.cargarUsuario(session.user);
     }
   }
 
@@ -73,10 +87,7 @@ export class AuthService {
     // Si salió todo bien y Supabase nos devolvió el objeto 'user'
     if (data.user) {
       // 1. Avisamos por el megáfono que entró alguien
-      this.user.set({
-        id: data.user.id,
-        email: data.user.email ?? ''
-      });
+      this.cargarUsuario(data.user);
       // Le avisamos al componente que fue un éxito
       return true;
     }

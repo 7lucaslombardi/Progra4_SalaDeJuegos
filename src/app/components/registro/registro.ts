@@ -1,14 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { firstValueFrom, timer } from 'rxjs';
 
 
 @Component({
   selector: 'app-registro',
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './registro.html',
   styleUrl: './registro.css',
 })
@@ -16,15 +16,21 @@ export class RegistroComponent {
 
   // Inyectamos nuestro servicio
   private authService = inject(AuthService);
+  private router = inject(Router);
+
+  private fb = inject(FormBuilder);
 
   // ==========================================
-  // ESTADO DEL FORMULARIO (Lo que el usuario tipea)
+  // ESTADO DEL FORMULARIO REACTIVO
   // ==========================================
-  email = '';
-  password = '';
-  nombre = '';
-  apellido = '';
-  edad: number | null = null;
+  registroForm = this.fb.group({
+    nombre: ['', [Validators.required]],
+    apellido: ['', [Validators.required]],
+    // Validamos que la edad sea un número y esté entre 1 y 100
+    edad: ['', [Validators.required, Validators.min(1), Validators.max(100)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
 
 
   // ==========================================
@@ -43,15 +49,10 @@ export class RegistroComponent {
   // MÉTODO PRINCIPAL: Cuando el usuario aprieta "Ingresar"
   // ==========================================
   async onSubmit() {
-    // 1. Mini validación: No dejamos que mande el formulario vacío
-    if (!this.email || !this.password || !this.nombre || !this.apellido || this.edad === null) {
-      this.errorMensaje.set('Se necesitan completar todos los campos.');
-       return; // Cortamos la ejecución acá mismo
-    }
-
-    // 2. Validación de la edad: Aseguramos que sea un número entre 1 y 120
-    if (!this.edad || this.edad < 1 || this.edad > 100) {
-      this.errorMensaje.set('Debes ingresar una edad valida');
+    // 1. Si el formulario no cumple las validaciones, cortamos la ejecución
+    if (this.registroForm.invalid) {
+      this.errorMensaje.set('Por favor, revisa los campos en rojo.');
+      this.registroForm.markAllAsTouched(); // Para que salten los errores visuales
       return;
     }
 
@@ -59,26 +60,31 @@ export class RegistroComponent {
     this.loading.set(true);
     this.errorMensaje.set('');
 
-    // 3. Llamamos al servicio (Fijate que ya no hay try...catch)
-    // Nos va a devolver 'true' si entró, o 'false' si falló.
+    // Extraemos los valores de forma segura
+    const { email, password, nombre, apellido, edad } = this.registroForm.value;
+
+    // 3. Llamamos al servicio
     const success = await this.authService.crearUsuario(
       {
-        correo: this.email,
-        nombre: this.nombre,
-        apellido: this.apellido,
-        edad: this.edad,
-      }, this.password);
-
+        correo: email as string,
+        nombre: nombre as string,
+        apellido: apellido as string,
+        edad: Number(edad), // Aseguramos que pase como número
+      },
+      password as string
+    );
     if (success) {
       // 2. ¡ÉXITO! Apagamos el spinner rojo de error y mostramos la alerta verde
-      this.loading.set(false);
       this.mensajeExitoso.set('¡Usuario creado con exito! ');
 
       // 3. Hacemos la pausa de 2 segundos para que el usuario disfrute su éxito
       await firstValueFrom(timer(2000));
+      this.loading.set(false);
 
       // 4. Recién ahora, ejecutamos el login (y el login sí nos lleva al /home)
-      await this.authService.login(this.email, this.password);
+      await this.authService.login(email as string, password as string);
+      // Redirigimos a la pantalla de Login
+      this.router.navigate(['/bienvenida']);
     }
     else {
       this.errorMensaje.set('No se pudo registrar el usuario:' + ' ' + this.authService.errorMensaje());

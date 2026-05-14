@@ -15,7 +15,6 @@
     padding: 40px;
     border: 3px solid #000;
     box-shadow: 8px 8px 0px #000;
-    /* Sombra sólida de la imagen */
     border-radius: 12px;
 }
 
@@ -48,42 +47,63 @@
     margin-bottom: 8px;
 }
 
-/* Inputs con borde marcado y focus celeste suave como la imagen */
+/* 🔴 MODIFICADO: Inputs con borde marcado Neubrutalista (igual al Login) */
 .neo-input {
     width: 100%;
     height: 50px;
     padding: 0 15px;
-    border: 2px solid #e2e8f0;
-    border-radius: 10px;
+    padding-right: 45px; /* Espacio para que el texto no toque el ojo */
+    border: 3px solid #000000;
+    border-radius: 8px;
+    font-weight: 600;
     font-size: 16px;
-    color: #334155;
+    color: #000;
+    outline: none;
     transition: all 0.2s;
 }
 
 .neo-input:focus {
-    outline: none;
-    border-color: #cbd5e1;
-    background-color: #f8fafc;
+    box-shadow: 4px 4px 0px #000000;
+    transform: translate(-2px, -2px);
+}
+
+/* 🔴 NUEVO: Clase para los errores de validación de los formularios reactivos */
+.error-text {
+    color: #ff0000;
+    display: block;
+    margin-top: 5px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
 }
 
 /* Password Eye */
 .neo-pass-wrapper {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .neo-eye-btn {
     position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 12px;
     background: none;
     border: none;
-    color: #64748b;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000; /* Negro para que combine con el borde */
     cursor: pointer;
     font-size: 1.2rem;
+    transition: transform 0.2s ease;
 }
 
-/* Botón Negro de la imagen */
+.neo-eye-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Botón Negro Principal */
 .neo-btn-primary {
     width: 100%;
     height: 60px;
@@ -100,7 +120,7 @@
     margin-top: 10px;
 }
 
-.neo-btn-primary:hover {
+.neo-btn-primary:hover:not(:disabled) {
     background-color: #ffff00;
     /* Amarillo neón al pasar el mouse */
     color: #000000;
@@ -108,13 +128,14 @@
     transform: translate(-3px, -3px);
 }
 
-.neo-btn-primary:active {
+.neo-btn-primary:active:not(:disabled) {
     transform: translate(0, 0);
     box-shadow: none;
 }
 
 .neo-btn-primary:disabled {
-    background-color: #ccc;
+    background-color: #cccccc;
+    color: #666666;
     cursor: not-allowed;
 }
 
@@ -161,4 +182,16 @@
     align-items: center;
     gap: 10px;
     animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% {
+        transform: translateX(-50%) scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
 }
