@@ -1,59 +1,61 @@
-# Progra4SalaDeJuegos
+# 🕹️ Trabajo Práctico: Sala de Juegos
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+**Programación IV - UTN FRA**
 
-## Development server
+Proyecto web interactivo desarrollado con Angular, que integra un sistema de autenticación de usuarios y una colección de mini-juegos (en desarrollo), todo bajo una estética visual "Neubrutalista".
 
-To start a local development server, run:
+👤 **Desarrollador:** Lucas Lombardi  
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos](https://progra4-sala-de-juegos-git-main-7lucaslombardis-projects.vercel.app/)
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🛠️ Stack Tecnológico
 
-## Code scaffolding
+Para el desarrollo de esta aplicación se seleccionaron las siguientes tecnologías y herramientas:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* **Frontend:** Angular 18 (Arquitectura Standalone).
+* **Backend & Auth:** Supabase (Base de datos y gestión de usuarios).
+* **Manejo de Estado & Formularios:** Angular Signals + Reactive Forms (`ReactiveFormsModule`).
+* **Estilos:** CSS Puro orientado a diseño UI Neubrutalista (alto contraste, sombras rígidas).
+* **Despliegue:** Vercel (Integración continua desde GitHub).
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚀 Progreso del Proyecto
 
-```bash
-ng generate --help
-```
+### ✅ Sprint 1: Fundamentos y Navegación
+**Estado:** Finalizado | **Tag:** `v1.0`
+🔗 **Deploy (Vercel):** (https://progra4-sala-de-juegos-git-main-7lucaslombardis-projects.vercel.app/)
 
-## Building
+En esta etapa se construyó la base estructural de la aplicación, asegurando un enrutamiento fluido y el despliegue inicial en la nube.
 
-To build the project run:
+* **Arquitectura:** Creación de los componentes base (`Home`/`Bienvenida`, `Login`, `Registro`, `QuienSoy`).
+* **Ruteo:** Configuración inicial de `app.routes.ts` permitiendo la navegación libre entre las pantallas.
+* **Integración API:** La sección "Quién Soy" consume la API pública de GitHub para obtener y renderizar dinámicamente mi información de perfil y avatar.
+* **Diseño:** Configuración del Favicon del sitio y maquetación inicial de las vistas.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### ✅ Sprint 2: Seguridad y Manejo de Usuarios
+**Estado:** Finalizado | **Tag:** `v2.0.0`
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos](https://progra4-sala-de-juegos-git-sprint2-7lucaslombardis-projects.vercel.app/)
 
-## Running unit tests
+Implementación de la capa de seguridad, gestión de sesiones y control de acceso a las rutas dependiendo del estado del jugador.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+**1. Gestión de Sesión (Header Dinámico)**
+* La barra de navegación reacciona en tiempo real usando Signals.
+* **Usuario Anónimo:** Solo visualiza los accesos a Login y Registro.
+* **Usuario Logueado:** Visualiza su nombre, la sección "Quién Soy" y el botón para cerrar sesión.
 
-```bash
-ng test
-```
+**2. Sistema de Registro**
+* Formulario Reactivo validado en tiempo real (requiere nombre, apellido, edad válida, formato de email correcto y contraseña segura).
+* Creación del usuario en la base de datos de Supabase.
+* Inicio de sesión automático y redirección fluida tras un registro exitoso.
 
-## Running end-to-end tests
+**3. Autenticación (Login) y Accesibilidad**
+* Validación de credenciales contra Supabase.
+* Manejo de errores amigable para el usuario (credenciales inválidas, campos incompletos).
+* Incorporación de **Accesos Rápidos**: 3 botones de testeo que autocompletan el formulario con usuarios preexistentes para agilizar la evaluación del docente.
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**4. Protección de Rutas (Guards)**
+* Implementación de `authGuard` de Angular para restringir el acceso. Si un usuario no autenticado intenta acceder a una ruta protegida (como los juegos), es redirigido automáticamente al Login.
