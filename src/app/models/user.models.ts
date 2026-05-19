@@ -17,3 +17,11 @@ export interface Usuario {
     apellido: string;
     edad: number;
 }
+
+export interface Mensaje {
+    id: number;
+    user_id: string;
+    usuario_nombre: string; // Aquí se guardará el nombre automáticamente
+    contenido: string;
+    created_at: string;
+}

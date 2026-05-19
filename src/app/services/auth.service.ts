@@ -46,7 +46,7 @@ export class AuthService {
   // Extraemos las propiedades que necesitamos usando desestructuración
   const { id, email, user_metadata } = supabaseUser;
 
-  // Creamos un objeto de perfil con valores de respaldo (fallback)
+  // Creamos un objeto de perfil con valores de respaldo 
   const perfilActualizado = {
     id: id,
     email: email ?? '',

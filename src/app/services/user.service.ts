@@ -15,14 +15,13 @@ export class UserService {
     loading = signal<boolean>(false);
     error = signal<boolean>(false);
 
-    loadProfile() {
-    this.loading.set(true);
-    this.error.set(false);
-    }
 
     // Método para obtener usuario desde GitHub
     obtenerUsuario(): void {
     
+    this.loading.set(true);
+    this.error.set(false);
+
     this.http.get('https://api.github.com/users/7lucaslombardi').subscribe({
         
         // Guardamos la respuesta en el signal

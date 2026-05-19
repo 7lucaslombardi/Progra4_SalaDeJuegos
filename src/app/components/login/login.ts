@@ -37,7 +37,7 @@ export class LoginComponent {
   usuariosTest = [
     { email: 'jugador1@mail.com', password: 'jugador1', label: 'Jugador 1' },
     { email: 'jugador2@mail.com', password: 'jugador2', label: 'Jugador 2' },
-    { email: 'jugador3@mail.com', password: 'jugador2', label: 'Jugador 3' },
+    { email: 'jugador3@mail.com', password: 'jugador3', label: 'Jugador 3' },
   ];
 
   async onSubmit() {
