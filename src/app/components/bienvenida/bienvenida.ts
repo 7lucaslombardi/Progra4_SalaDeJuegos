@@ -1,12 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { RouterLink } from '@angular/router';
+
 
 
 
 
 @Component({
   selector: 'app-bienvenida',
-  imports: [],
+  imports: [ RouterLink ],
   templateUrl: './bienvenida.html',
   styleUrl: './bienvenida.css',
 })

@@ -1,0 +1,340 @@
+/* =========================================
+   CONTENEDORES PRINCIPALES
+   ========================================= */
+.neo-titulo {
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.neo-card {
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 12px;
+    box-shadow: 8px 8px 0px #000000;
+}
+
+/* =========================================
+   BADGES (Vidas)
+   ========================================= */
+.neo-badge {
+    padding: 8px 12px;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 0.9rem;
+    box-shadow: 3px 3px 0px #000;
+    background-color: #fff;
+}
+
+.neo-badge-success {
+    background-color: #4ade80;
+}
+
+.neo-badge-warning {
+    background-color: #facc15;
+}
+
+.neo-badge-danger {
+    background-color: #f87171;
+    color: #fff;
+}
+
+/* =========================================
+   SVG DEL AHORCADO
+   ========================================= */
+.hangman-svg {
+    width: 200px;
+    height: 220px;
+}
+
+/* =========================================
+   ZONA DE LA PALABRA
+   ========================================= */
+.palabra-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    min-height: 60px;
+}
+
+.letra-slot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 55px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    border-radius: 6px;
+    box-shadow: 4px 4px 0px #000000;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+/* Cuando se adivina la letra, la casilla se pinta de celeste Argentina */
+.letra-adivinada {
+    background-color: #7ed6df;
+    /* Celeste en lugar del #ffff00 */
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   TECLADO VIRTUAL NEOBRUTALISTA
+   ========================================= */
+.teclado-virtual {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tecla-neo {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    color: #000000;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px #000000;
+    transition: all 0.1s ease;
+}
+
+/* Efecto al pasar el mouse por una tecla habilitada */
+.tecla-neo:hover:not(:disabled) {
+    background-color: #00ffff;
+    /* Cian flúor */
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000000;
+}
+
+/* Efecto al presionar el clic */
+.tecla-neo:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000000;
+}
+
+.tecla-neo:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+    /* Se ve un poco más sólido que tu original */
+}
+
+/* Colores de acierto y error */
+.tecla-correcta {
+    background-color: #4ade80 !important;
+    /* Verde */
+    box-shadow: 1px 1px 0px #000 !important;
+    transform: translate(2px, 2px);
+}
+
+.tecla-incorrecta {
+    background-color: #f87171 !important;
+    /* Rojo */
+    color: #ffffff;
+    box-shadow: 1px 1px 0px #000 !important;
+    transform: translate(2px, 2px);
+}
+
+/* =========================================
+   PANTALLAS DE RESULTADO
+   ========================================= */
+.resultado-banner {
+    border: 4px solid #000;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 6px 6px 0px #000;
+}
+
+.resultado-victoria {
+    background-color: #4ade80;
+}
+
+.resultado-derrota {
+    background-color: #f87171;
+    color: #fff;
+}
+
+.fw-black {
+    font-weight: 900;
+}
+
+/* =========================================
+   BOTONES DE ACCIÓN
+   ========================================= */
+.neo-btn-back {
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-weight: 800;
+    box-shadow: 3px 3px 0px #000;
+    transition: all 0.2s;
+}
+
+.neo-btn-back:hover {
+    background-color: #ffff00;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+.neo-btn-action {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #000;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #fff;
+    transition: all 0.2s;
+}
+
+.neo-btn-action:hover {
+    background-color: #ffff00;
+    color: #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+/* =========================================
+   CAJA DE PISTA (NEOBRUTALISTA)
+   ========================================= */
+.pista-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.neo-pista-box {
+    background-color: #ffff00;
+    /* Fondo amarillo característico */
+    border: 3px solid #000000;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 4px 4px 0px #000000;
+    max-width: 90%;
+    /* Evita que desborde la pantalla en celulares */
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+/* Pequeño efecto al pasar el mouse por arriba */
+.neo-pista-box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+}
+
+.pista-label {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000000;
+    margin-right: 5px;
+}
+
+.pista-texto {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #111111;
+}
+
+/* =========================================
+   CAJA DE PUNTAJE (ESTILO NEO)
+   ========================================= */
+.neo-stat-box {
+    border: 3px solid #000;
+    border-radius: 8px;
+    padding: 10px 25px;
+    text-align: center;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.box-puntos {
+    background-color: #00ffff;
+    /* Color Cian flúor */
+}
+
+.stat-num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    color: #000;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para celulares pequeños */
+@media (max-width: 576px) {
+    .neo-pista-box {
+        padding: 8px 15px;
+    }
+
+    .pista-label,
+    .pista-texto {
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================
+   BADGE DEL CRONÓMETRO (ESTILO NEO)
+   ========================================= */
+.neo-badge-timer {
+    background-color: #00ffff;
+    /* Cian neón */
+    color: #000;
+    min-width: 85px;
+    text-align: center;
+}
+
+/* Pequeña animación de latido para cuando el tiempo corre (opcional) */
+.neo-badge-timer:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 0px #000;
+}
+
+/* Ajuste de los indicadores en móvil */
+@media (max-width: 576px) {
+    .d-flex.gap-2 {
+        gap: 5px !important;
+    }
+
+    .neo-badge {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+
+    .neo-badge-timer {
+        min-width: 70px;
+    }
+}
+
+/* =========================================
+   RESPONSIVO PARA CELULARES
+   ========================================= */
+@media (max-width: 576px) {
+    .tecla-neo {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .letra-slot {
+        width: 35px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+}

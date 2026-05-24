@@ -1,0 +1,146 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <button class="neo-btn-back px-3 py-2" (click)="volver()">
+                    <i class="bi bi-arrow-left me-1"></i> VOLVER
+                </button>
+
+                <h2 class="neo-titulo mb-0 d-none d-md-block">AHORCADO</h2>
+
+                <div class="d-flex gap-2">
+                    <span class="neo-badge neo-badge-timer">
+                        ⏱️ {{ cronometro.tiempoFormateado() }}
+                    </span>
+
+                    <span class="neo-badge" [class.neo-badge-success]="intentosRestantes() > 3"
+                        [class.neo-badge-warning]="intentosRestantes() <= 3 && intentosRestantes() > 1"
+                        [class.neo-badge-danger]="intentosRestantes() <= 1">
+                        ❤️ {{ intentosRestantes() }} VIDAS
+                    </span>
+                </div>
+            </div>
+            <div class="neo-card p-4">
+
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="neo-stat-box box-puntos">
+                        <span class="stat-num">{{ puntaje() }}</span>
+                        <span class="stat-label">PUNTOS</span>
+                    </div>
+                </div>
+
+                <div class="text-center mb-4">
+                    <svg class="hangman-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="20" y1="210" x2="180" y2="210" stroke="#000" stroke-width="8"
+                            stroke-linecap="round" />
+                        <line x1="40" y1="210" x2="160" y2="210" stroke="#4ade80" stroke-width="4"
+                            stroke-linecap="round" transform="translate(0, 5)" />
+
+                        @if (partesMostradas() >= 1) {
+                        <path d="M 90 75 L 90 90 L 110 90 L 110 75 Z" fill="#fcd3b6" stroke="#000" stroke-width="3" />
+                        <path d="M 82 50 C 82 30, 118 30, 118 50 C 118 75, 108 85, 100 85 C 92 85, 82 75, 82 50 Z"
+                            fill="#fcd3b6" stroke="#000" stroke-width="3" />
+                        <path d="M 80 50 C 80 20, 120 20, 120 50 C 118 40, 100 35, 82 45 Z" fill="#2b2b2b" stroke="#000"
+                            stroke-width="3" />
+                        <path d="M 82 55 C 82 85, 100 90, 100 90 C 100 90, 118 85, 118 55 C 115 65, 85 65, 82 55 Z"
+                            fill="#2b2b2b" stroke="#000" stroke-width="3" />
+                        }
+
+                        @if (partesMostradas() >= 2) {
+                        <path d="M 75 80 C 85 75, 115 75, 125 80 L 120 140 L 80 140 Z" fill="#7ed6df" stroke="#000"
+                            stroke-width="4" />
+                        <polygon points="88,78 98,78 95,140 85,140" fill="#ffffff" stroke="#000" stroke-width="2" />
+                        <polygon points="102,78 112,78 115,140 105,140" fill="#ffffff" stroke="#000" stroke-width="2" />
+                        <text x="100" y="125" font-family="'Righteous', sans-serif" font-size="26" font-weight="900"
+                            text-anchor="middle" fill="#000">10</text>
+                        }
+
+                        @if (partesMostradas() >= 3) {
+                        <path d="M 75 80 C 60 75, 55 80, 55 90 L 55 45 C 55 40, 63 40, 63 45 L 63 75 Z" fill="#fcd3b6"
+                            stroke="#000" stroke-width="4" />
+                        <path d="M 75 80 C 60 75, 50 80, 50 95 L 68 95 Z" fill="#ffffff" stroke="#000"
+                            stroke-width="3" />
+                        <rect x="53" y="70" width="12" height="8" fill="#facc15" stroke="#000" stroke-width="2" />
+                        }
+
+                        @if (partesMostradas() >= 4) {
+                        <path d="M 125 80 C 140 75, 145 80, 145 90 L 145 45 C 145 40, 137 40, 137 45 L 137 75 Z"
+                            fill="#fcd3b6" stroke="#000" stroke-width="4" />
+                        <path d="M 125 80 C 140 75, 150 80, 150 95 L 132 95 Z" fill="#ffffff" stroke="#000"
+                            stroke-width="3" />
+                        }
+
+                        @if (partesMostradas() >= 5) {
+                        <path d="M 80 140 L 120 140 L 125 170 L 100 160 L 75 170 Z" fill="#111111" stroke="#000"
+                            stroke-width="4" />
+                        <path d="M 82 170 L 95 165 L 90 200 L 78 200 Z" fill="#ffffff" stroke="#000" stroke-width="3" />
+                        <path d="M 78 200 L 90 200 L 95 210 L 70 210 Z" fill="#facc15" stroke="#000" stroke-width="3" />
+                        <path d="M 118 170 L 105 165 L 110 200 L 122 200 Z" fill="#ffffff" stroke="#000"
+                            stroke-width="3" />
+                        <path d="M 122 200 L 110 200 L 105 210 L 130 210 Z" fill="#facc15" stroke="#000"
+                            stroke-width="3" />
+                        }
+
+                        @if (partesMostradas() >= 6) {
+                        <text x="100" y="22" font-size="28" text-anchor="middle" fill="#facc15" stroke="#000"
+                            stroke-width="2" font-weight="900" letter-spacing="4">★★★</text>
+                        }
+                    </svg>
+                </div>
+
+                <div class="pista-container mb-4">
+                    <div class="neo-pista-box">
+                        <span class="pista-label">💡 PISTA:</span>
+                        <span class="pista-texto">{{ pista() }}</span>
+                    </div>
+                </div>
+
+                <div class="palabra-display text-center mb-4">
+                    @for (letra of palabraMostrada().split(''); track $index) {
+                    @if (letra === ' ') {
+                    <div style="width: 20px;"></div>
+                    } @else {
+                    <span class="letra-slot" [class.letra-adivinada]="letra !== '_'">
+                        {{ letra !== '_' ? letra : '' }}
+                    </span>
+                    }
+                    }
+                </div>
+
+                @if (!juegoTerminado()) {
+                <div class="teclado-virtual">
+                    @for (letra of letras; track letra) {
+                    <button class="tecla-neo" [class.tecla-correcta]="yaUsada(letra) && esCorrecta(letra)"
+                        [class.tecla-incorrecta]="yaUsada(letra) && !esCorrecta(letra)"
+                        [disabled]="yaUsada(letra) || juegoTerminado()" (click)="elegirLetra(letra)">
+                        {{ letra }}
+                    </button>
+                    }
+                </div>
+                }
+
+                @if (victoria()) {
+                <div class="resultado-banner resultado-victoria text-center mt-4">
+                    <h3 class="fw-black mb-2">🎉 ¡GANASTE! 🎉</h3>
+                    <p class="mb-4 fs-5">La palabra era <strong>{{ palabra() }}</strong></p>
+                    <button class="neo-btn-action" (click)="nuevaPartida()">
+                        JUGAR DE NUEVO
+                    </button>
+                </div>
+                }
+
+                @if (derrota()) {
+                <div class="resultado-banner resultado-derrota text-center mt-4">
+                    <h3 class="fw-black mb-2">💀 ¡PERDISTE! 💀</h3>
+                    <p class="mb-4 fs-5">La palabra era <strong>{{ palabra() }}</strong></p>
+                    <button class="neo-btn-action" (click)="nuevaPartida()">
+                        INTENTAR DE NUEVO
+                    </button>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
