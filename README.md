@@ -90,7 +90,7 @@ Desarrollo de los juegos interactivos principales, implementación de un manejo 
 
 ### ✅ Sprint 4: APIs, Juego Propio y Ranking de Resultados
 **Estado:** Finalizado | **Tag:** `v4.0.0`
-🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos]()
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos](https://progra4-sala-de-juegos-git-sprint4-7lucaslombardis-projects.vercel.app/)
 
 En este último sprint finalizamos el catálogo de juegos cumpliendo con todos los requerimientos de consumo de datos y armamos la pantalla general de estadísticas.
 
