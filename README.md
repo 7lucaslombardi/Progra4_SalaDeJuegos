@@ -25,7 +25,7 @@ Para el desarrollo de esta aplicación se seleccionaron las siguientes tecnolog�
 
 ### ✅ Sprint 1: Fundamentos y Navegación
 **Estado:** Finalizado | **Tag:** `v1.0`
-🔗 **Deploy (Vercel):** (https://progra4-sala-de-juegos-git-main-7lucaslombardis-projects.vercel.app/)
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos](https://progra4-sala-de-juegos-git-main-7lucaslombardis-projects.vercel.app/)
 
 En esta etapa se construyó la base estructural de la aplicación, asegurando un enrutamiento fluido y el despliegue inicial en la nube.
 
@@ -64,7 +64,7 @@ Implementación de la capa de seguridad, gestión de sesiones y control de acces
 
 ### ✅ Sprint 3: Juegos, Arquitectura Reactiva y Base de Datos 
 **Estado:** Finalizado | **Tag:** `v3.0.0`
-🔗 **Deploy (Vercel):** [Agregar enlace de Vercel aquí](https://progra4-sala-de-juegos-git-sprint3-7lucaslombardis-projects.vercel.app/)
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos](https://progra4-sala-de-juegos-git-sprint3-7lucaslombardis-projects.vercel.app/)
 
 Desarrollo de los juegos interactivos principales, implementación de un manejo de estado moderno y persistencia estructurada de los resultados en el backend.
 
