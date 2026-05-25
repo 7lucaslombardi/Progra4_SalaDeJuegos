@@ -14,5 +14,5 @@ import { RouterLink } from '@angular/router';
 })
 export class BienvenidaComponent {
 
-  authService = inject(AuthService);
+  public authService = inject(AuthService);
 }

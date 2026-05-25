@@ -1,0 +1,90 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <button class="neo-btn-back px-3 py-2" (click)="volver()">
+                    <i class="bi bi-arrow-left me-1"></i> VOLVER
+                </button>
+
+                <h2 class="neo-titulo mb-0 d-none d-md-block">PREGUNTADOS</h2>
+
+                <div class="d-flex gap-2">
+                    <span class="neo-badge neo-badge-timer">
+                        ⏱️ {{ cronometro.tiempoFormateado() }}
+                    </span>
+                    <span class="neo-badge neo-badge-ronda">
+                        PREGUNTA {{ turnoActual() + 1 }}/10
+                    </span>
+                </div>
+            </div>
+
+            <div class="neo-card p-4">
+
+                @if (cargando()) {
+                <div class="text-center py-5">
+                    <div class="spinner-border mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
+                    <h4 class="fw-black text-uppercase">Buscando preguntas...</h4>
+                </div>
+                }
+
+                @if (partidaLista() && !partidaFinalizada() && preguntaEnPantalla()) {
+                <div class="pregunta-container">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class="neo-badge bg-white text-uppercase">
+                            📂 {{ preguntaEnPantalla()?.categoria }}
+                        </span>
+                        <span class="neo-badge bg-white">
+                            ✅ ACIERTOS: {{ cantidadAciertos() }}
+                        </span>
+                    </div>
+
+                    <h3 class="fw-black mb-4 lh-base text-center enunciado-caja"
+                        [innerHTML]="preguntaEnPantalla()?.enunciado"></h3>
+
+                    <div class="d-flex flex-column gap-3">
+                        @for (opcion of preguntaEnPantalla()?.todasLasOpciones; track opcion) {
+                        <button class="neo-btn-trivia" [disabled]="pausaBloqueo()"
+                            [class.correcta]="pausaBloqueo() && opcion === preguntaEnPantalla()?.correcta"
+                            [class.incorrecta]="pausaBloqueo() && opcionElegida() === opcion && opcion !== preguntaEnPantalla()?.correcta"
+                            (click)="evaluarRespuesta(opcion)" [innerHTML]="opcion">
+                        </button>
+                        }
+                    </div>
+                </div>
+                }
+
+                @if (partidaFinalizada()) {
+                <div class="resultado-banner text-center mt-4" [class.resultado-victoria]="esVictoria()"
+                    [class.resultado-derrota]="!esVictoria()">
+
+                    @if (esVictoria()) {
+                    <h3 class="fw-black mb-2">🏆 ¡EXCELENTE! 🏆</h3>
+                    <p class="fs-5 mb-4">¡Demostraste que sabés un montón!</p>
+                    } @else {
+                    <h3 class="fw-black mb-2">📚 ¡A SEGUIR LEYENDO! 📚</h3>
+                    <p class="fs-5 mb-4">No llegaste a las 6 correctas.</p>
+                    }
+
+                    <div class="resumen-stats mb-4">
+                        <p><strong>Respuestas correctas:</strong> {{ cantidadAciertos() }} / 10</p>
+                        <p class="fs-4 fw-black mt-2">PUNTAJE FINAL: {{ puntuacionFinal() }}</p>
+                    </div>
+
+                    @if (guardando()) {
+                    <p class="text-dark fw-bold mb-3">
+                        <span class="spinner-border spinner-border-sm me-2"></span>Guardando récord...
+                    </p>
+                    }
+
+                    <button class="neo-btn-action" (click)="reiniciarPartida()">
+                        JUGAR DE NUEVO
+                    </button>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

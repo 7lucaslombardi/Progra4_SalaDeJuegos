@@ -1,0 +1,141 @@
+<div class="container py-4">
+
+    <div class="d-flex align-items-center justify-content-between mb-5">
+        <button class="neo-btn-back px-3 py-2" (click)="volver()">
+            <i class="bi bi-arrow-left me-1"></i> VOLVER AL MENÚ
+        </button>
+        <h2 class="neo-titulo mb-0">🏆 RANKING GENERAL</h2>
+        <div style="width: 110px;" class="d-none d-md-block"></div>
+    </div>
+
+    @if (cargando()) {
+    <div class="text-center py-5">
+        <div class="spinner-border mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
+        <h4 class="fw-black">CARGANDO TABLAS DE POSICIONES...</h4>
+    </div>
+    } @else {
+
+    <div class="row">
+
+        <div class="col-12 col-xl-6 mb-5">
+            <div class="neo-card-tabla p-4">
+                <h3 class="tabla-titulo titulo-ahorcado">🪓 AHORCADO</h3>
+                <div class="table-responsive">
+                    <table class="neo-table">
+                        <thead>
+                            <tr>
+                                <th>JUGADOR</th>
+                                <th>PUNTAJE</th>
+                                <th>TIEMPO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (res of resultadosAhorcado(); track res.created_at) {
+                            <tr>
+                                <td class="fw-bold">{{ res.jugador_nombre }}</td>
+                                <td class="fw-black text-success">{{ res.puntaje }} PTS</td>
+                                <td>{{ formatearTiempo(res.tiempo_de_partida) }}</td>
+                            </tr>
+                            } @empty {
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">Nadie jugó todavía</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-xl-6 mb-5">
+            <div class="neo-card-tabla p-4">
+                <h3 class="tabla-titulo titulo-preguntados">🧠 PREGUNTADOS</h3>
+                <div class="table-responsive">
+                    <table class="neo-table">
+                        <thead>
+                            <tr>
+                                <th>JUGADOR</th>
+                                <th>PUNTAJE</th>
+                                <th>TIEMPO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (res of resultadosPreguntados(); track res.created_at) {
+                            <tr>
+                                <td class="fw-bold">{{ res.jugador_nombre }}</td>
+                                <td class="fw-black text-success">{{ res.puntaje }} PTS</td>
+                                <td>{{ formatearTiempo(res.tiempo_de_partida) }}</td>
+                            </tr>
+                            } @empty {
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">Nadie jugó todavía</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-xl-6 mb-5">
+            <div class="neo-card-tabla p-4">
+                <h3 class="tabla-titulo titulo-mayor">🃏 MAYOR O MENOR</h3>
+                <div class="table-responsive">
+                    <table class="neo-table">
+                        <thead>
+                            <tr>
+                                <th>JUGADOR</th>
+                                <th>PUNTAJE</th>
+                                <th>TIEMPO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (res of resultadosMayorMenor(); track res.created_at) {
+                            <tr>
+                                <td class="fw-bold">{{ res.jugador_nombre }}</td>
+                                <td class="fw-black text-success">{{ res.puntaje }} PTS</td>
+                                <td>{{ formatearTiempo(res.tiempo_de_partida) }}</td>
+                            </tr>
+                            } @empty {
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">Nadie jugó todavía</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-xl-6 mb-5">
+            <div class="neo-card-tabla p-4">
+                <h3 class="tabla-titulo titulo-circle">🎯 CLICK THE CIRCLE</h3>
+                <div class="table-responsive">
+                    <table class="neo-table">
+                        <thead>
+                            <tr>
+                                <th>JUGADOR</th>
+                                <th>TIEMPO RÉCORD</th>
+                                <th>PUNTAJE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (res of resultadosClickCircle(); track res.created_at) {
+                            <tr>
+                                <td class="fw-bold">{{ res.jugador_nombre }}</td>
+                                <td class="fw-black text-primary">⏱️ {{ formatearTiempo(res.tiempo_de_partida) }}</td>
+                                <td>{{ res.puntaje }} PTS</td>
+                            </tr>
+                            } @empty {
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">Nadie jugó todavía</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div> }
+</div>

@@ -8,11 +8,11 @@ import { UserSession, Usuario } from '../models/user.models';
 })
 export class AuthService {
 
-    // Inyectamos las herramientas que vamos a usar
+  // Inyectamos las herramientas que vamos a usar
   private router = inject(Router);
   private supabase = inject(SupabaseService);
 
-// Estado de sesion
+  // Estado de sesion
 
   // Este es el Signal principal. Guarda los datos del usuario activo o 'null' si no hay nadie.
   user = signal<UserSession | null>(null);
@@ -21,8 +21,15 @@ export class AuthService {
   // Ideal para ocultar/mostrar botones en el Navbar.
   isAuthenticated = computed(() => this.user() !== null);
 
-  // Signal computado: Devuelve el correo del usuario logueado o la palabra 'Invitado'.
-  nombreUsuario = computed(() => this.user()?.nombre ?? 'Invitado');
+  // Signal computado: Devuelve el nombre del usuario logueado o la palabra 'Invitado'.
+  nombreUsuario = computed(() => {
+    const u = this.user();
+
+    // Si por algún motivo de carga rápida no hay usuario, devuelve vacío (el HTML igual lo oculta)
+    if (!u) return '';
+
+    return `${u.nombre} ${u.apellido}`;
+  });
 
   // Controla el mensaje de error rojo que le mostramos al usuario
   errorMensaje = signal('');
@@ -43,21 +50,21 @@ export class AuthService {
   }
 
   private cargarUsuario(supabaseUser: any) {
-  // Extraemos las propiedades que necesitamos usando desestructuración
-  const { id, email, user_metadata } = supabaseUser;
+    // Extraemos las propiedades que necesitamos usando desestructuración
+    const { id, email, user_metadata } = supabaseUser;
 
-  // Creamos un objeto de perfil con valores de respaldo 
-  const perfilActualizado = {
-    id: id,
-    email: email ?? '',
-    nombre: user_metadata?.nombre,
-    apellido: user_metadata?.apellido,
-    edad: Number(user_metadata?.edad)
-  };
+    // Creamos un objeto de perfil con valores de respaldo 
+    const perfilActualizado = {
+      id: id,
+      email: email ?? '',
+      nombre: user_metadata?.nombre,
+      apellido: user_metadata?.apellido,
+      edad: Number(user_metadata?.edad)
+    };
 
-  // Actualizamos con el objeto ya procesado
-  this.user.set(perfilActualizado);
-}
+    // Actualizamos con el objeto ya procesado
+    this.user.set(perfilActualizado);
+  }
 
 
   // Método para que la sesión sobreviva si el usuario aprieta F5 (recarga la página)
@@ -71,7 +78,7 @@ export class AuthService {
     }
   }
 
-// Login
+  // Login
   async login(email: string, password: string): Promise<boolean> {
     // Le mandamos las credenciales a Supabase y abrimos el paquete { data, error }
     const { data, error } = await this.supabase.getCliente().auth.signInWithPassword({ email, password });
@@ -98,7 +105,7 @@ export class AuthService {
   // =======================================================
   // MÉTODO 2: REGISTRO 
   // =======================================================
-  async crearUsuario (datosUsuario: Usuario, password: string): Promise<boolean> {
+  async crearUsuario(datosUsuario: Usuario, password: string): Promise<boolean> {
 
     // Llamamos a signUp enviando el correo y la clave obligatorios
     const { data, error } = await this.supabase.getCliente().auth.signUp({
@@ -124,7 +131,7 @@ export class AuthService {
 
     // Si el registro fue exitoso
     if (data.user) {
-        return true;
+      return true;
     }
 
     return false;

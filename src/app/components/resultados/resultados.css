@@ -1,0 +1,118 @@
+/* =========================================
+   ESTILOS GENERALES
+   ========================================= */
+.neo-titulo {
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0px #facc15;
+}
+
+.fw-black {
+    font-weight: 900;
+}
+
+/* Contenedor tipo bloque neobrutalista para cada tabla */
+.neo-card-tabla {
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 12px;
+    box-shadow: 8px 8px 0px #000000;
+}
+
+/* =========================================
+   TÍTULOS DISTINTIVOS POR JUEGO
+   ========================================= */
+.tabla-titulo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    padding: 10px 15px;
+    border: 3px solid #000;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.titulo-ahorcado {
+    background-color: #facc15;
+}
+
+/* Amarillo */
+.titulo-preguntados {
+    background-color: #cc00ff;
+    color: #fff;
+}
+
+/* Violeta */
+.titulo-mayor {
+    background-color: #f87171;
+}
+
+/* Rojo */
+.titulo-circle {
+    background-color: #00ffff;
+}
+
+/* Cian */
+
+/* =========================================
+   LA TABLA NEOBRUTALISTA
+   ========================================= */
+.neo-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    color: #000;
+    font-size: 1.05rem;
+}
+
+/* Encabezados gruesos */
+.neo-table th {
+    background-color: #f0f0f0;
+    color: #000;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 12px;
+    border-bottom: 4px solid #000000;
+    text-align: left;
+}
+
+/* Celdas del historial */
+.neo-table td {
+    padding: 14px 12px;
+    border-bottom: 2px solid #000000;
+    vertical-align: middle;
+}
+
+/* Efecto cebra neobrutalista (filas alternadas sutiles) */
+.neo-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Resaltar la fila al pasar el mouse */
+.neo-table tbody tr:hover {
+    background-color: #fffdec;
+}
+
+/* =========================================
+   BOTÓN VOLVER
+   ========================================= */
+.neo-btn-back {
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-weight: 800;
+    box-shadow: 3px 3px 0px #000;
+    transition: all 0.2s;
+}
+
+.neo-btn-back:hover {
+    background-color: #ffff00;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+/* Evitar desbordes en móviles */
+.table-responsive {
+    border: none;
+}

@@ -2,10 +2,10 @@ import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-// Asegurate de que las rutas a tus servicios sean las correctas
-import { ResultadosService } from '../../services/registros.service';
-import { AuthService } from '../../services/auth.service';
+
 import { TiempoService } from '../../services/tiempo.service';
+import { RegistrosService } from '../../services/registros.service';
+import { AuthService } from '../../services/auth.service';
 
 
 const PALABRAS = [
@@ -43,8 +43,8 @@ const LETRAS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   styleUrl: './ahorcado.css'
 })
 export class AhorcadoComponent implements OnInit {
-  private auth = inject(AuthService);
-  private resultadosService = inject(ResultadosService);
+  private authService = inject(AuthService);
+  private registrosService = inject(RegistrosService);
   private router = inject(Router);
 
   public cronometro = inject(TiempoService);
@@ -147,12 +147,12 @@ export class AhorcadoComponent implements OnInit {
       errores: this.letrasIncorrectas().length
     };
 
-    await this.resultadosService.guardarResultado(
+    await this.registrosService.guardarResultado(
       'AHORCADO',
-      this.puntaje(), // ¡Llamamos al signal directamente!
+      this.puntaje(), // Llamamos al signal directamente
       this.victoria(),
       segundosJugados,
-      detallesExtras
+      detallesExtras,
     );
 
     this.guardando.set(false);

@@ -1,0 +1,171 @@
+/* =========================================
+   CONTENEDORES PRINCIPALES Y BADGES
+   ========================================= */
+.neo-titulo {
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.neo-card {
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 12px;
+    box-shadow: 8px 8px 0px #000000;
+}
+
+.neo-badge {
+    padding: 8px 12px;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 0.9rem;
+    box-shadow: 3px 3px 0px #000;
+    background-color: #fff;
+    white-space: nowrap;
+}
+
+.neo-badge-timer {
+    background-color: #00ffff;
+    color: #000;
+}
+
+.neo-badge-ronda {
+    background-color: #facc15;
+    color: #000;
+}
+
+/* =========================================
+   CAJA DE LA PREGUNTA
+   ========================================= */
+.enunciado-caja {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 3px solid #000;
+    border-radius: 8px;
+    box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+   BOTONES DE RESPUESTA (TRIVIA)
+   ========================================= */
+.neo-btn-trivia {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    border-radius: 8px;
+    padding: 15px 20px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #000;
+    text-align: left;
+    /* Las opciones quedan alineadas a la izquierda */
+    box-shadow: 4px 4px 0px #000000;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: 100%;
+}
+
+.neo-btn-trivia:hover:not(:disabled) {
+    background-color: #facc15;
+    /* Amarillo flúor al pasar el mouse */
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+}
+
+.neo-btn-trivia:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000000;
+}
+
+/* Clases dinámicas cuando responde */
+.neo-btn-trivia.correcta {
+    background-color: #4ade80 !important;
+    /* Verde */
+    color: #000 !important;
+}
+
+.neo-btn-trivia.incorrecta {
+    background-color: #f87171 !important;
+    /* Rojo */
+    color: #000 !important;
+}
+
+/* Le sacamos la sombra a todos los botones cuando hace clic en uno */
+.neo-btn-trivia:disabled {
+    cursor: not-allowed;
+    box-shadow: 2px 2px 0px #000000;
+    transform: translate(2px, 2px);
+    opacity: 0.8;
+}
+
+/* =========================================
+   BOTONES GENÉRICOS (Volver y Jugar)
+   ========================================= */
+.neo-btn-back {
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-weight: 800;
+    box-shadow: 3px 3px 0px #000;
+    transition: all 0.2s;
+}
+
+.neo-btn-back:hover {
+    background-color: #ffff00;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+.neo-btn-action {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #000;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #fff;
+    transition: all 0.2s;
+}
+
+.neo-btn-action:hover {
+    background-color: #ffff00;
+    color: #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+/* =========================================
+   PANTALLAS FINALES
+   ========================================= */
+.resultado-banner {
+    border: 4px solid #000;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 6px 6px 0px #000;
+    color: #000;
+}
+
+.resultado-victoria {
+    background-color: #4ade80;
+}
+
+.resultado-derrota {
+    background-color: #f87171;
+}
+
+.fw-black {
+    font-weight: 900;
+}
+
+@media (max-width: 576px) {
+    .neo-btn-trivia {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+
+    .enunciado-caja {
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+}
