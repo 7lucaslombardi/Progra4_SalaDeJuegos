@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
     padding: 40px 20px;
 }
 
@@ -47,7 +46,7 @@
     margin-bottom: 8px;
 }
 
-/* 🔴 MODIFICADO: Inputs con borde marcado Neubrutalista (igual al Login) */
+/*  Inputs con borde marcado Neubrutalista (igual al Login) */
 .neo-input {
     width: 100%;
     height: 50px;
@@ -67,7 +66,7 @@
     transform: translate(-2px, -2px);
 }
 
-/* 🔴 NUEVO: Clase para los errores de validación de los formularios reactivos */
+/* 🔴 Clase para los errores de validación de los formularios reactivos */
 .error-text {
     color: #ff0000;
     display: block;

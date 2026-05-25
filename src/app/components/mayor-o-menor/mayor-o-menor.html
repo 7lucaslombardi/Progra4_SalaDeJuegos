@@ -1,0 +1,116 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <button class="neo-btn-back px-3 py-2" (click)="volver()">
+                    <i class="bi bi-arrow-left me-1"></i> VOLVER
+                </button>
+
+                <h2 class="neo-titulo mb-0 d-none d-md-block">MAYOR O MENOR</h2>
+
+                <div class="d-flex gap-2">
+                    <span class="neo-badge neo-badge-timer">
+                        ⏱️ {{ cronometro.tiempoFormateado() }}
+                    </span>
+                    <span class="neo-badge neo-badge-ronda">
+                        RONDA {{ ronda() }}/10
+                    </span>
+                </div>
+            </div>
+
+            <div class="neo-card p-4">
+
+                <div class="d-flex justify-content-around flex-wrap gap-2 mb-4">
+                    <div class="neo-stat-box box-aciertos">
+                        <span class="stat-num">{{ acertadas() }}</span>
+                        <span class="stat-label">ACIERTOS</span>
+                    </div>
+                    <div class="neo-stat-box box-racha">
+                        <span class="stat-num">{{ rachaActual() }}</span>
+                        <span class="stat-label">RACHA</span>
+                    </div>
+                    <div class="neo-stat-box box-puntos">
+                        <span class="stat-num">{{ puntaje() }}</span>
+                        <span class="stat-label">PUNTOS</span>
+                    </div>
+                </div>
+
+                @if (!juegoTerminado()) {
+
+                <div class="cartas-area d-flex align-items-center justify-content-center gap-2 gap-md-4 mb-5">
+
+                    <div class="neo-carta" [class.neo-carta-roja]="esRoja(cartaActual()!.palo)">
+                        <span class="carta-valor-top">{{ cartaActual()?.nombre }}</span>
+                        <span class="carta-palo">{{ cartaActual()?.palo }}</span>
+                        <span class="carta-valor-bot">{{ cartaActual()?.nombre }}</span>
+                    </div>
+
+                    <div class="resultado-icono">
+                        @if (ultimoResultado() === 'acierto') {
+                        <div class="icono-feedback icono-bien">✔️</div>
+                        } @else if (ultimoResultado() === 'fallo') {
+                        <div class="icono-feedback icono-mal">❌</div>
+                        } @else {
+                        <div class="icono-feedback icono-neutro">VS</div>
+                        }
+                    </div>
+
+                    <div class="neo-carta" [class.neo-carta-oculta]="!mostrarSiguiente()"
+                        [class.neo-carta-roja]="mostrarSiguiente() && esRoja(cartaSiguiente()!.palo)">
+
+                        @if (mostrarSiguiente()) {
+                        <span class="carta-valor-top">{{ cartaSiguiente()?.nombre }}</span>
+                        <span class="carta-palo">{{ cartaSiguiente()?.palo }}</span>
+                        <span class="carta-valor-bot">{{ cartaSiguiente()?.nombre }}</span>
+                        } @else {
+                        <span class="carta-palo-oculto">?</span>
+                        }
+                    </div>
+
+                </div>
+
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <button class="neo-btn-juego btn-mayor" (click)="elegir('mayor')" [disabled]="mostrarSiguiente()">
+                        <i class="bi bi-arrow-up-circle-fill me-1"></i> ES MAYOR
+                    </button>
+                    <button class="neo-btn-juego btn-menor" (click)="elegir('menor')" [disabled]="mostrarSiguiente()">
+                        <i class="bi bi-arrow-down-circle-fill me-1"></i> ES MENOR
+                    </button>
+                </div>
+
+                } @else {
+
+                <div class="resultado-banner text-center mt-4" [class.resultado-victoria]="victoria()"
+                    [class.resultado-derrota]="!victoria()">
+
+                    @if (victoria()) {
+                    <h3 class="fw-black mb-2">🏆 ¡EXCELENTE! 🏆</h3>
+                    <p class="fs-5 mb-4">Acertaste la mitad de las cartas o más.</p>
+                    } @else {
+                    <h3 class="fw-black mb-2">🃏 ¡BUEN INTENTO! 🃏</h3>
+                    <p class="fs-5 mb-4">No llegaste a las 5 necesarias.</p>
+                    }
+
+                    <div class="resumen-stats mb-4">
+                        <p><strong>Aciertos:</strong> {{ acertadas() }} / 10</p>
+                        <p><strong>Racha Máxima:</strong> {{ rachaMaxima() }}</p>
+                        <p class="fs-4 fw-black mt-2">PUNTAJE FINAL: {{ puntaje() }}</p>
+                    </div>
+
+                    @if (guardando()) {
+                    <p class="text-dark fw-bold mb-3">
+                        <span class="spinner-border spinner-border-sm me-2"></span>Guardando...
+                    </p>
+                    }
+
+                    <button class="neo-btn-action" (click)="nuevaPartida()">
+                        JUGAR DE NUEVO
+                    </button>
+                </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

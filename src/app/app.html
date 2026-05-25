@@ -1,8 +1,27 @@
 <app-header></app-header>
 
-<!-- container de Bootstrap: centra el contenido y aplica padding lateral -->
-<!-- py-4 = padding vertical de 1.5rem arriba y abajo                     -->
-<main class="container py-4">
+<div class="layout-principal" [class.con-chat-abierto]="chatAbierto">
+  <main class="layout-contenido-central container py-4">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+@if (mostrarChat && authService.user()) {
   
-  <router-outlet></router-outlet>
-</main>
+  <button class="btn-chat-flotante" (click)="toggleChat()">
+    💬
+  </button>
+
+  @if (chatAbierto) {
+    <div class="ventana-chat-flotante">
+      
+      <div class="chat-header-compact">
+        <h2 class="chat-title-compact">SALA DE CHAT</h2>
+        <button class="btn-cerrar-chat" (click)="toggleChat()">X</button>
+      </div>
+
+      <app-chat></app-chat>
+      
+    </div>
+  }
+}

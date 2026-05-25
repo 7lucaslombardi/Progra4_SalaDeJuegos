@@ -25,7 +25,7 @@ Para el desarrollo de esta aplicación se seleccionaron las siguientes tecnolog�
 
 ### ✅ Sprint 1: Fundamentos y Navegación
 **Estado:** Finalizado | **Tag:** `v1.0`
-🔗 **Deploy (Vercel):** (https://progra4-sala-de-juegos-git-main-7lucaslombardis-projects.vercel.app/)
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos](https://progra4-sala-de-juegos-git-main-7lucaslombardis-projects.vercel.app/)
 
 En esta etapa se construyó la base estructural de la aplicación, asegurando un enrutamiento fluido y el despliegue inicial en la nube.
 
@@ -59,3 +59,29 @@ Implementación de la capa de seguridad, gestión de sesiones y control de acces
 
 **4. Protección de Rutas (Guards)**
 * Implementación de `authGuard` de Angular para restringir el acceso. Si un usuario no autenticado intenta acceder a una ruta protegida (como los juegos), es redirigido automáticamente al Login.
+
+---
+
+### ✅ Sprint 3: Juegos, Arquitectura Reactiva y Base de Datos 
+**Estado:** Finalizado | **Tag:** `v3.0.0`
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos](https://progra4-sala-de-juegos-git-sprint3-7lucaslombardis-projects.vercel.app/)
+
+Desarrollo de los juegos interactivos principales, implementación de un manejo de estado moderno y persistencia estructurada de los resultados en el backend.
+
+**1. Desarrollo de Juegos**
+
+* Implementación del Ahorcado con teclado virtual, sistema de pistas dinámicas y gráfico SVG reactivo a los errores.
+
+* Creación de Mayor o Menor con generación aleatoria de mazos, seguimiento de rachas y control automatizado de rondas.
+
+**2. Arquitectura Reactiva y Servicios**
+
+* Manejo del estado de los componentes utilizando Angular Signals (signal, computed) para actualizaciones fluidas en la vista y un código más limpio.
+
+* Implementación de un TiempoService modular instanciado a nivel de componente (providers) para manejar cronómetros independientes por juego y evitar fugas de memoria.
+
+**3. Persistencia de Datos (Supabase)**
+
+* Conexión para el guardado automático de resultados (puntajes, victorias/derrotas, tiempos) al finalizar cada partida.
+
+* Uso de campos JSONB en PostgreSQL junto con tipado estricto en TypeScript (DetallesPartida) para almacenar métricas específicas de cada juego (letras falladas, rachas máximas).

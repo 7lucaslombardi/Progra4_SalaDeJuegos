@@ -1,0 +1,305 @@
+/* =========================================
+   CONTENEDORES PRINCIPALES Y BADGES
+   ========================================= */
+.neo-titulo {
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.neo-card {
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 12px;
+    box-shadow: 8px 8px 0px #000000;
+}
+
+.neo-badge {
+    padding: 8px 12px;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 0.9rem;
+    box-shadow: 3px 3px 0px #000;
+    background-color: #fff;
+    white-space: nowrap;
+}
+
+.neo-badge-timer {
+    background-color: #00ffff;
+    color: #000;
+}
+
+.neo-badge-ronda {
+    background-color: #facc15;
+    color: #000;
+}
+
+/* =========================================
+   STATS EN CAJAS BLOQUE
+   ========================================= */
+.neo-stat-box {
+    border: 3px solid #000;
+    border-radius: 8px;
+    padding: 10px 15px;
+    text-align: center;
+    min-width: 110px;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.box-aciertos {
+    background-color: #4ade80;
+}
+
+/* Verde */
+.box-racha {
+    background-color: #facc15;
+}
+
+/* Amarillo */
+.box-puntos {
+    background-color: #00ffff;
+}
+
+/* Cian */
+
+.stat-num {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: #000;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   LAS CARTAS NEOBRUTALISTAS
+   ========================================= */
+.neo-carta {
+    width: 100px;
+    height: 140px;
+    border: 4px solid #000;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    /* Negro para espadas y tréboles */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 6px 6px 0px #000;
+    font-weight: 900;
+    transition: transform 0.2s ease;
+}
+
+.neo-carta-roja {
+    color: #ff0000;
+    /* Rojo puro para corazones y diamantes */
+}
+
+.neo-carta-oculta {
+    background-color: #cc00ff;
+    /* Violeta flúor para el dorso */
+    background-image: repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 2px, transparent 8px);
+    color: #fff;
+}
+
+.carta-valor-top {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    font-size: 1.2rem;
+}
+
+.carta-valor-bot {
+    position: absolute;
+    bottom: 5px;
+    right: 8px;
+    font-size: 1.2rem;
+    transform: rotate(180deg);
+}
+
+.carta-palo {
+    font-size: 2.5rem;
+}
+
+.carta-palo-oculto {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* =========================================
+   ÍCONO CENTRAL (RESULTADO)
+   ========================================= */
+.resultado-icono {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.icono-feedback {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.icono-neutro {
+    background-color: #fff;
+    font-size: 0.9rem;
+}
+
+.icono-bien {
+    background-color: #4ade80;
+    color: #000;
+}
+
+.icono-mal {
+    background-color: #f87171;
+    color: #000;
+}
+
+/* =========================================
+   BOTONES DE JUEGO Y ACCIÓN
+   ========================================= */
+.neo-btn-juego {
+    border: 4px solid #000;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    box-shadow: 4px 4px 0px #000;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: #000;
+}
+
+.btn-mayor {
+    background-color: #4ade80;
+}
+
+.btn-menor {
+    background-color: #f87171;
+}
+
+.neo-btn-juego:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+    filter: brightness(1.1);
+}
+
+.neo-btn-juego:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+.neo-btn-juego:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
+/* =========================================
+   BOTONES GENÉRICOS (Volver y Jugar Nuevo)
+   ========================================= */
+.neo-btn-back {
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 8px;
+    font-weight: 800;
+    box-shadow: 3px 3px 0px #000;
+    transition: all 0.2s;
+}
+
+.neo-btn-back:hover {
+    background-color: #ffff00;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+.neo-btn-action {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #000;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #fff;
+    transition: all 0.2s;
+}
+
+.neo-btn-action:hover {
+    background-color: #ffff00;
+    color: #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+/* =========================================
+   PANTALLAS FINALES
+   ========================================= */
+.resultado-banner {
+    border: 4px solid #000;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 6px 6px 0px #000;
+    color: #000;
+}
+
+.resultado-victoria {
+    background-color: #4ade80;
+}
+
+.resultado-derrota {
+    background-color: #f87171;
+}
+
+.resumen-stats p {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.fw-black {
+    font-weight: 900;
+}
+
+/* =========================================
+   RESPONSIVO MÓVIL
+   ========================================= */
+@media (max-width: 576px) {
+    .neo-carta {
+        width: 75px;
+        height: 110px;
+    }
+
+    .carta-palo {
+        font-size: 2rem;
+    }
+
+    .neo-stat-box {
+        min-width: 85px;
+        padding: 5px 10px;
+    }
+
+    .stat-num {
+        font-size: 1.3rem;
+    }
+
+    .neo-btn-juego {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}

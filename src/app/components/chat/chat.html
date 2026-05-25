@@ -1,0 +1,38 @@
+<div class="neo-chat-container">
+    <div class="neo-chat-card">
+
+        <!-- <div class="chat-header">
+            <h2 class="chat-title">SALA DE CHAT</h2>
+        </div> -->
+
+        <div class="chat-messages">
+            @for (msg of chatService.mensajes(); track msg.id) {
+
+            <div class="message-row" [ngClass]="{'own-msg-row': esMiMensaje(msg.user_id)}">
+                <div class="neo-message-bubble" [ngClass]="{'own-msg-bubble': esMiMensaje(msg.user_id)}">
+                    <div class="msg-info">
+                        <span class="msg-user">{{ msg.usuario_nombre }}</span>
+                        <span class="msg-time">{{ msg.created_at | date:'HH:mm' }}</span>
+                    </div>
+                    <p class="msg-content">{{ msg.contenido }}</p>
+                </div>
+            </div>
+
+            } @empty {
+            <div class="empty-state">
+                <p>La sala está vacía.<br>¡Envia un mensaje!</p>
+            </div>
+            }
+
+            <div id="ancla-chat"></div>
+        </div>
+
+        <div class="chat-input-area">
+            <input [(ngModel)]="nuevoMensaje" (keyup.enter)="enviar()" class="neo-chat-input" placeholder="Escribí...">
+            <button (click)="enviar()" class="neo-btn-send" [disabled]="!nuevoMensaje.trim()">
+                ENVIAR
+            </button>
+        </div>
+
+    </div>
+</div>

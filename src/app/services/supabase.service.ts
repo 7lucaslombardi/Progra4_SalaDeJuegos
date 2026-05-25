@@ -15,13 +15,4 @@ export class SupabaseService {
   getCliente(): SupabaseClient {
     return this.cliente;
   }
-  // // Ejemplo: Obtener el usuario actual
-  // get user() {
-  //   return this.supabase.auth.getUser();
-  // }
-
-//   // Ejemplo: Función para cerrar sesión
-//   async signOut() {
-//     await this.supabase.auth.signOut();
-//   }
 }
