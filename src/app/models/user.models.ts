@@ -34,6 +34,7 @@ export interface RegistroResultados {
     tiempo_de_partida: number; // Tiempo en segundos 
     descripcion: string;
     created_at?: string;
+    jugador_nombre?: string;
 }
 
 // Creamos el molde de lo que puede venir adentro del JSON
@@ -44,4 +45,6 @@ export interface DetallesPartida {
     cartas_acertadas?: number;      // Mayor o Menor
     racha_respuestas?: number;      // Preguntados
     clics_totales?: number;         // Click the Circle
+    aciertos?: number;              // Click the Circle
 }
+

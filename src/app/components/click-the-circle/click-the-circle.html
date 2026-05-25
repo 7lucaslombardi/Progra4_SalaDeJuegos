@@ -1,0 +1,74 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <button class="neo-btn-back px-3 py-2" (click)="volver()">
+                    <i class="bi bi-arrow-left me-1"></i> VOLVER
+                </button>
+
+                <h2 class="neo-titulo mb-0 d-none d-md-block">CLICK THE CIRCLE</h2>
+
+                <div class="d-flex gap-2">
+                    <span class="neo-badge neo-badge-timer">
+                        ⏱️ {{ cronometro.tiempoFormateado() }}
+                    </span>
+                    <span class="neo-badge neo-badge-ronda">
+                        OBJETIVO: {{ aciertos() }}/15
+                    </span>
+                </div>
+            </div>
+
+            <div class="neo-card p-4">
+
+                <div class="d-flex justify-content-around flex-wrap gap-2 mb-4">
+                    <div class="neo-stat-box box-aciertos">
+                        <span class="stat-num">{{ aciertos() }}</span>
+                        <span class="stat-label">ATRAPADOS</span>
+                    </div>
+                    <div class="neo-stat-box box-errores">
+                        <span class="stat-num">{{ errores() }}</span>
+                        <span class="stat-label">FALLOS</span>
+                    </div>
+                    <div class="neo-stat-box box-puntos">
+                        <span class="stat-num">{{ puntaje() }}</span>
+                        <span class="stat-label">PUNTOS</span>
+                    </div>
+                </div>
+
+                @if (!juegoTerminado()) {
+
+                <div class="area-de-juego" (click)="clickFondo()">
+                    <div class="el-circulo" [style.top]="posicionTop()" [style.left]="posicionLeft()"
+                        (click)="clickCirculo($event)">
+                    </div>
+                </div>
+
+                } @else {
+
+                <div class="resultado-banner resultado-victoria text-center mt-4">
+                    <h3 class="fw-black mb-2">⚡ ¡TIEMPO! ⚡</h3>
+
+                    <div class="resumen-stats mb-4">
+                        <p><strong>Tiempo demorado:</strong> {{ cronometro.tiempoFormateado() }}</p>
+                        <p><strong>Clics fallados:</strong> {{ errores() }}</p>
+                        <p class="fs-4 fw-black mt-2">PUNTAJE FINAL: {{ puntaje() }}</p>
+                    </div>
+
+                    @if (guardando()) {
+                    <p class="text-dark fw-bold mb-3">
+                        <span class="spinner-border spinner-border-sm me-2"></span>Guardando récord...
+                    </p>
+                    }
+
+                    <button class="neo-btn-action" (click)="nuevaPartida()">
+                        MEJORAR TIEMPO
+                    </button>
+                </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

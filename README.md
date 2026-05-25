@@ -85,3 +85,33 @@ Desarrollo de los juegos interactivos principales, implementación de un manejo 
 * Conexión para el guardado automático de resultados (puntajes, victorias/derrotas, tiempos) al finalizar cada partida.
 
 * Uso de campos JSONB en PostgreSQL junto con tipado estricto en TypeScript (DetallesPartida) para almacenar métricas específicas de cada juego (letras falladas, rachas máximas).
+
+---
+
+### ✅ Sprint 4: APIs, Juego Propio y Ranking de Resultados
+**Estado:** Finalizado | **Tag:** `v4.0.0`
+🔗 **Deploy (Vercel):** [Acceder a la Sala de Juegos]()
+
+En este último sprint finalizamos el catálogo de juegos cumpliendo con todos los requerimientos de consumo de datos y armamos la pantalla general de estadísticas.
+
+**1. Preguntados (Trivia con API)**
+
+* Desarrollo del juego consumiendo datos directamente desde una API externa de preguntas.
+
+* Interfaz armada con botones dinámicos para las opciones de respuesta.
+
+* Guardado automático en la base de datos al finalizar, registrando el usuario y la cantidad de preguntas acertadas.
+
+**2. Juego Propio: Click the Circle**
+
+* Creación de un juego de agilidad 100% personalizado.
+
+* Al terminar la partida, se envía a la base de datos el usuario y el tiempo exacto que tardó en completarlo para medir su desempeño.
+
+**3. Listado Histórico de Resultados**
+
+* Creación de la nueva página "Resultados" accesible desde el menú principal.
+
+* Implementación de 4 tablas independientes (una para cada juego) que traen la información desde la base de datos.
+
+* Los datos de todos los jugadores se muestran ordenados desde el mejor desempeño hasta el peor.

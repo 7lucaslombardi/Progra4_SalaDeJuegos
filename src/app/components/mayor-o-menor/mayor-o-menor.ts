@@ -1,9 +1,9 @@
 import { Component, inject, signal, computed, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ResultadosService } from '../../services/registros.service';
 import { TiempoService } from '../../services/tiempo.service';
 import { DetallesPartida } from '../../models/user.models';
+import { RegistrosService } from '../../services/registros.service';
 
 // Defino cómo es una carta y qué palos hay disponibles
 type Palo = '♠' | '♥' | '♦' | '♣';
@@ -51,7 +51,7 @@ function generarMazoAleatorio(): Carta[] {
 })
 export class MayorOMenor implements OnInit, OnDestroy {
   // Traigo los servicios que necesito usar
-  private resultadosService = inject(ResultadosService);
+  private registrosService = inject(RegistrosService);
   private router = inject(Router);
   public cronometro = inject(TiempoService);
 
@@ -171,7 +171,7 @@ export class MayorOMenor implements OnInit, OnDestroy {
     };
 
     // Guardo todo de una llamando al servicio
-    await this.resultadosService.guardarResultado(
+    await this.registrosService.guardarResultado(
       'MAYOR-O-MENOR',
       this.puntaje(),
       this.victoria(),
